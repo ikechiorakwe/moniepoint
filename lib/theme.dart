@@ -5,4 +5,5 @@ final ThemeData theme = ThemeData(
   brightness: Brightness.light,
   primaryColor: gPrimaryColor,
   bottomAppBarColor: Colors.white,
+  scaffoldBackgroundColor: Colors.white,
 );

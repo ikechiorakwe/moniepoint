@@ -14,14 +14,18 @@ class MySearchBar extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
-                color: Colors.white,
                 border: Border.all(color: Colors.black26),
               ),
               height: gSize.height * 0.05,
               child: const TextField(
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    filled: false,
+                    fillColor: Colors.transparent,
+                    border: InputBorder.none,
+                    focusColor: Colors.black,
+                    // border: OutlineInputBorder(),
                     prefixIcon: Icon(Icons.search),
+                    prefixIconColor: Colors.black,
                     // hintText: "search",
                     labelText: 'Search'),
               ),
@@ -34,7 +38,7 @@ class MySearchBar extends StatelessWidget {
               ),
               iconSize: 40.0,
               badgeText: "1",
-              iconColor: Colors.black87,
+              iconColor: Colors.black,
             )),
         const Expanded(
             flex: 2,
@@ -44,7 +48,7 @@ class MySearchBar extends StatelessWidget {
                 ),
                 iconSize: 40.0,
                 badgeText: "9+",
-                iconColor: Colors.black87))
+                iconColor: Colors.black))
       ],
     );
   }

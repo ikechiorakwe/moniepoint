@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:moniepoint_take_home_assignment/app/utils/globals.dart';
-import 'package:moniepoint_take_home_assignment/app/widgets/search_bar.dart';
+import 'package:moniepoint_take_home_assignment/app/widgets/product_grid.dart';
+import 'package:moniepoint_take_home_assignment/app/widgets/services.dart';
+import 'package:moniepoint_take_home_assignment/app/widgets/swiper.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -10,17 +12,14 @@ class MyHomePage extends StatelessWidget {
     Size gSize = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            children: [
-              const Text("Hello"),
-              SizedBox(
-                height: gSize.height * 0.6,
-              ),
-              const MySearchBar(),
-            ],
-          ),
+        child: Column(
+          children: [
+            const MyCarousel(),
+            SizedBox(height: gSize.height * 0.03),
+            const MyServicesSlide(),
+            SizedBox(height: gSize.height * 0.02),
+            const MyProductGrid(),
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
