@@ -23,6 +23,7 @@ class _MyProductGridState extends State<MyProductGrid> {
             children: [
               SizedBox(height: gSize.height * 0.03),
               Container(
+                height: gSize.height * 0.026,
                 color: Colors.grey.shade100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -45,6 +46,7 @@ class _MyProductGridState extends State<MyProductGrid> {
               ),
               SizedBox(height: gSize.height * 0.008),
               const Grid(),
+              // const MyGridContainer(),
             ],
           ),
         ),
@@ -103,6 +105,7 @@ class Grid extends StatefulWidget {
 class _GridState extends State<Grid> {
   @override
   Widget build(BuildContext context) {
+    Size gSize = MediaQuery.of(context).size;
     return GridView.builder(
         shrinkWrap: true,
         physics: const ScrollPhysics(),
@@ -117,7 +120,11 @@ class _GridState extends State<Grid> {
 }
 
 class MyGridContainer extends StatefulWidget {
-  const MyGridContainer({Key? key, this.imagePath, this.shirtName, this.price})
+  const MyGridContainer(
+      {Key? key,
+      this.imagePath = "assets/images/s4.jpg",
+      this.shirtName = "Essentials Men's short-\nsleeve CrewNeck T-shirt",
+      this.price = "\$1,00"})
       : super(key: key);
 
   final String? imagePath;
@@ -132,100 +139,301 @@ class _MyGridContainerState extends State<MyGridContainer> {
   Widget build(BuildContext context) {
     IconData icon = Icons.favorite_outline;
     Size gSize = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Container(
-          height: gSize.height * 0.3,
-          width: gSize.width * 0.45,
-          child: Column(
-            children: [
-              Card(
-                semanticContainer: true,
-                clipBehavior: Clip.antiAliasWithSaveLayer,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0)),
-                ),
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      widget.imagePath!,
-                      height: gSize.height * 0.2,
-                      width: gSize.width * 0.8,
-                      fit: BoxFit.cover,
-                    ),
-                    Positioned(
-                      top: 0,
-                      right: 0,
-                      width: 35,
-                      height: 35,
-                      child: IconButton(
-                        onPressed: () {
-                          setState(() {});
-                        },
-                        icon: Icon(
-                          icon,
-                        ),
-                        iconSize: 28.0,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-          height: gSize.height * 0.3,
-          width: gSize.width * 0.45,
-          child: Card(
-              color: Colors.grey.shade100,
-              elevation: 0,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Shirt",
-                      style: Theme.of(context).textTheme.caption!.copyWith(
-                            color: gTextColor,
-                          )),
-                  SizedBox(height: gSize.height * 0.01),
-                  Text(widget.shirtName!,
-                      style: Theme.of(context).textTheme.caption!.copyWith(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12)),
-                  SizedBox(height: gSize.height * 0.02),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    // return Container(
+    //   child: Column(
+    //     children: [
+    //       Container(
+    //         height: gSize.height * 3.0,
+    //         width: gSize.width * 0.45,
+    //         child: Column(
+    //           children: [
+    //             Card(
+    //               semanticContainer: true,
+    //               clipBehavior: Clip.antiAliasWithSaveLayer,
+    //               shape: const RoundedRectangleBorder(
+    //                 borderRadius: BorderRadius.only(
+    //                     topLeft: Radius.circular(4.0),
+    //                     topRight: Radius.circular(4.0)),
+    //               ),
+    //               child: Stack(
+    //                 children: [
+    //                   Image.asset(
+    //                     widget.imagePath!,
+    //                     height: gSize.height * 0.2,
+    //                     width: gSize.width * 0.8,
+    //                     fit: BoxFit.cover,
+    //                   ),
+    //                   Positioned(
+    //                     top: 0,
+    //                     right: 0,
+    //                     width: 35,
+    //                     height: 35,
+    //                     child: IconButton(
+    //                       onPressed: () {
+    //                         setState(() {});
+    //                       },
+    //                       icon: Icon(
+    //                         icon,
+    //                       ),
+    //                       iconSize: 28.0,
+    //                     ),
+    //                   ),
+    //                 ],
+    //               ),
+    //             ),
+    //             Card(
+    //                 color: Colors.grey.shade100,
+    //                 elevation: 0,
+    //                 child: Column(
+    //                   crossAxisAlignment: CrossAxisAlignment.start,
+    //                   children: [
+    //                     Text("Shirt",
+    //                         style:
+    //                             Theme.of(context).textTheme.caption!.copyWith(
+    //                                   color: gTextColor,
+    //                                 )),
+    //                     SizedBox(height: gSize.height * 0.01),
+    //                     Text(widget.shirtName!,
+    //                         style: Theme.of(context)
+    //                             .textTheme
+    //                             .caption!
+    //                             .copyWith(
+    //                                 color: Colors.black,
+    //                                 fontWeight: FontWeight.bold,
+    //                                 fontSize: 12)),
+    //                     SizedBox(height: gSize.height * 0.02),
+    //                     Row(
+    //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //                       children: [
+    //                         Row(
+    //                           children: [
+    //                             Icon(
+    //                               Icons.star,
+    //                               size: 16,
+    //                               color: Colors.amber.shade400,
+    //                             ),
+    //                             Text("49 | 2998",
+    //                                 style: Theme.of(context)
+    //                                     .textTheme
+    //                                     .caption!
+    //                                     .copyWith(
+    //                                         color: gTextColor, fontSize: 12)),
+    //                           ],
+    //                         ),
+    //                         Text(widget.price!,
+    //                             style: Theme.of(context)
+    //                                 .textTheme
+    //                                 .caption!
+    //                                 .copyWith(
+    //                                     color: gPrimaryColor,
+    //                                     fontWeight: FontWeight.bold,
+    //                                     fontSize: 16))
+    //                       ],
+    //                     ),
+    //                   ],
+    //                 ))
+    //           ],
+    //         ),
+    //       ),
+    //       // Container(
+    //       //   height: gSize.height * 0.2,
+    //       //   width: gSize.width * 0.45,
+    //       //   child: Card(
+    //       //       color: Colors.grey.shade100,
+    //       //       elevation: 0,
+    //       //       child: Column(
+    //       //         crossAxisAlignment: CrossAxisAlignment.start,
+    //       //         children: [
+    //       //           Text("Shirt",
+    //       //               style: Theme.of(context).textTheme.caption!.copyWith(
+    //       //                     color: gTextColor,
+    //       //                   )),
+    //       //           SizedBox(height: gSize.height * 0.01),
+    //       //           Text(widget.shirtName!,
+    //       //               style: Theme.of(context).textTheme.caption!.copyWith(
+    //       //                   color: Colors.black,
+    //       //                   fontWeight: FontWeight.bold,
+    //       //                   fontSize: 12)),
+    //       //           SizedBox(height: gSize.height * 0.02),
+    //       //           Row(
+    //       //             mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    //       //             children: [
+    //       //               Row(
+    //       //                 children: [
+    //       //                   Icon(
+    //       //                     Icons.star,
+    //       //                     size: 16,
+    //       //                     color: Colors.amber.shade400,
+    //       //                   ),
+    //       //                   Text("49 | 2998",
+    //       //                       style: Theme.of(context)
+    //       //                           .textTheme
+    //       //                           .caption!
+    //       //                           .copyWith(
+    //       //                               color: gTextColor, fontSize: 12)),
+    //       //                 ],
+    //       //               ),
+    //       //               Text(widget.price!,
+    //       //                   style: Theme.of(context)
+    //       //                       .textTheme
+    //       //                       .caption!
+    //       //                       .copyWith(
+    //       //                           color: gPrimaryColor,
+    //       //                           fontWeight: FontWeight.bold,
+    //       //                           fontSize: 16))
+    //       //             ],
+    //       //           ),
+    //       //         ],
+    //       //       )),
+    //       // )
+    //     ],
+    //   ),
+    // );
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Container(
+            height: gSize.height * 0.22,
+            width: gSize.width * 0.45,
+            child: Column(
+              children: [
+                Card(
+                  semanticContainer: true,
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(4.0),
+                        topRight: Radius.circular(4.0)),
+                  ),
+                  child: Stack(
                     children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.star,
-                            size: 16,
-                            color: Colors.amber.shade400,
-                          ),
-                          Text("49 | 2998",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .caption!
-                                  .copyWith(color: gTextColor, fontSize: 12)),
-                        ],
+                      Image.asset(
+                        widget.imagePath!,
+                        height: gSize.height * 0.2,
+                        width: gSize.width * 0.8,
+                        fit: BoxFit.cover,
                       ),
-                      Text(widget.price!,
-                          style: Theme.of(context).textTheme.caption!.copyWith(
-                              color: gPrimaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16))
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        width: 35,
+                        height: 35,
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {});
+                          },
+                          icon: Icon(
+                            icon,
+                          ),
+                          iconSize: 28.0,
+                        ),
+                      ),
                     ],
                   ),
-                ],
-              )),
-        )
-      ],
+                ),
+                // Card(
+                //     color: Colors.grey.shade100,
+                //     elevation: 0,
+                //     child: Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Text("Shirt",
+                //             style: Theme.of(context).textTheme.caption!.copyWith(
+                //                   color: gTextColor,
+                //                 )),
+                //         SizedBox(height: gSize.height * 0.01),
+                //         Text(widget.shirtName!,
+                //             style: Theme.of(context).textTheme.caption!.copyWith(
+                //                 color: Colors.black,
+                //                 fontWeight: FontWeight.bold,
+                //                 fontSize: 12)),
+                //         SizedBox(height: gSize.height * 0.02),
+                //         Row(
+                //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //           children: [
+                //             Row(
+                //               children: [
+                //                 Icon(
+                //                   Icons.star,
+                //                   size: 16,
+                //                   color: Colors.amber.shade400,
+                //                 ),
+                //                 Text("49 | 2998",
+                //                     style: Theme.of(context)
+                //                         .textTheme
+                //                         .caption!
+                //                         .copyWith(
+                //                             color: gTextColor, fontSize: 12)),
+                //               ],
+                //             ),
+                //             Text(widget.price!,
+                //                 style: Theme.of(context)
+                //                     .textTheme
+                //                     .caption!
+                //                     .copyWith(
+                //                         color: gPrimaryColor,
+                //                         fontWeight: FontWeight.bold,
+                //                         fontSize: 16))
+                //           ],
+                //         ),
+                //       ],
+                //     )
+                // )
+              ],
+            ),
+          ),
+          Container(
+            height: gSize.height * 0.2,
+            width: gSize.width * 0.45,
+            child: Card(
+                color: Colors.grey.shade100,
+                elevation: 0,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Shirt",
+                        style: Theme.of(context).textTheme.caption!.copyWith(
+                              color: gTextColor,
+                            )),
+                    SizedBox(height: gSize.height * 0.01),
+                    Text(widget.shirtName!,
+                        style: Theme.of(context).textTheme.caption!.copyWith(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 12)),
+                    SizedBox(height: gSize.height * 0.02),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              size: 16,
+                              color: Colors.amber.shade400,
+                            ),
+                            Text("49 | 2998",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .caption!
+                                    .copyWith(color: gTextColor, fontSize: 12)),
+                          ],
+                        ),
+                        Text(widget.price!,
+                            style: Theme.of(context)
+                                .textTheme
+                                .caption!
+                                .copyWith(
+                                    color: gPrimaryColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16))
+                      ],
+                    ),
+                  ],
+                )),
+          )
+        ],
+      ),
     );
   }
 }
-// Essentials Men's short-\nsleeve CrewNeck T-shirt
-// $18,000
