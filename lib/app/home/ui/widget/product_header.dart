@@ -10,7 +10,7 @@ class ProductHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
-      color: Colors.grey.shade100,
+      color: Colors.grey.shade50,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

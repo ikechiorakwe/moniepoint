@@ -7,31 +7,31 @@ class Grid extends StatefulWidget {
   List<Widget> get shirts {
     return [
       const MyGridContainer(
-        imagePath: "assets/images/s6.jpg",
+        imagePath: "assets/images/3-.png",
         shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
         price: "\$18.00",
       ),
       const MyGridContainer(
-        imagePath: "assets/images/s2.jpg",
+        imagePath: "assets/images/6-.png",
         shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
         price: "\$12.00",
       ),
       const MyGridContainer(
-        imagePath: "assets/images/s5.jpg",
+        imagePath: "assets/images/5-.png",
         shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
         price: "\$10.00",
       ),
       const MyGridContainer(
-        imagePath: "assets/images/s4.jpg",
+        imagePath: "assets/images/4-.png",
         shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
         price: "\$20.00",
       ),
       const MyGridContainer(
-          imagePath: "assets/images/s3.jpg",
+          imagePath: "assets/images/1-.png",
           shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
           price: "\$15.00"),
       const MyGridContainer(
-          imagePath: "assets/images/s7.jpg",
+          imagePath: "assets/images/2-.png",
           shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
           price: "\$11.00"),
       const MyGridContainer(
@@ -52,7 +52,6 @@ class Grid extends StatefulWidget {
 class _GridState extends State<Grid> {
   @override
   Widget build(BuildContext context) {
-    Size gSize = MediaQuery.of(context).size;
     return SliverPadding(
       padding: const EdgeInsets.symmetric(horizontal: 12),
       sliver: SliverGrid(
@@ -97,18 +96,13 @@ class _MyGridContainerState extends State<MyGridContainer> {
     Size gSize = MediaQuery.of(context).size;
     return InkWell(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => ProductDetailScreen(
-                    imagePath: widget.imagePath,
-                    price: widget.price,
-                  )),
-        );
+        Navigator.of(context)
+            .push(_createRoute(widget.imagePath!, widget.price!));
       },
       child: Column(
         children: [
           Card(
+            elevation: 0,
             color: Colors.grey.shade100,
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
@@ -117,11 +111,15 @@ class _MyGridContainerState extends State<MyGridContainer> {
             ),
             child: Stack(
               children: [
-                Image.asset(
-                  widget.imagePath!,
-                  height: gSize.height * 0.15,
-                  width: gSize.width * 0.8,
-                  fit: BoxFit.cover,
+                Center(
+                  child: Image.asset(
+                    widget.imagePath!,
+                    height: gSize.height * 0.15,
+                    width: gSize.width * 0.9,
+                    // fit: BoxFit.cover,
+                    cacheHeight: 300,
+                    cacheWidth: 200,
+                  ),
                 ),
                 Positioned(
                   top: 0,
@@ -147,7 +145,7 @@ class _MyGridContainerState extends State<MyGridContainer> {
             ),
           ),
           Card(
-              color: Colors.grey.shade100,
+              color: Colors.grey.shade50,
               elevation: 0,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -193,4 +191,26 @@ class _MyGridContainerState extends State<MyGridContainer> {
       ),
     );
   }
+}
+
+Route _createRoute(String image, String price) {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) =>
+        ProductDetailScreen(
+      imagePath: image,
+      price: price,
+    ),
+    transitionDuration: const Duration(seconds: 2),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.easeInCubic;
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }

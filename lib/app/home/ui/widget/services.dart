@@ -43,36 +43,34 @@ class _MyServicesSlideState extends State<MyServicesSlide> {
     ];
   }
 
-  ScrollController _scrollController = ScrollController();
-  _scrollToBottom() {
-    _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
-  }
-
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
-    _scrollController = ScrollController();
   }
 
+  final controller = PageController();
   @override
   Widget build(BuildContext context) {
     Size gSize = MediaQuery.of(context).size;
 
-    return SizedBox(
-      height: gSize.height * 0.1,
-      width: gSize.width * 0.89,
-      child: ListView.builder(
-        reverse: true,
-        controller: _scrollController,
-        itemBuilder: (BuildContext context, int index) {
-          return services[index];
-        },
-        itemCount: services.length,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        physics: const ScrollPhysics(),
-      ),
+    return Column(
+      children: [
+        SizedBox(
+          height: gSize.height * 0.1,
+          width: gSize.width * 0.89,
+          child: ListView.builder(
+            reverse: true,
+            controller: controller,
+            itemBuilder: (BuildContext context, int index) {
+              return services[index];
+            },
+            itemCount: services.length,
+            scrollDirection: Axis.horizontal,
+            // shrinkWrap: true,
+            physics: const ScrollPhysics(),
+          ),
+        ),
+      ],
     );
   }
 }

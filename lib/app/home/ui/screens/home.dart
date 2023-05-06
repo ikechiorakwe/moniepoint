@@ -5,7 +5,7 @@ import 'package:moniepoint_take_home_assignment/app/universal_widgets/search_bar
 import 'package:moniepoint_take_home_assignment/app/utils/globals.dart';
 import 'package:moniepoint_take_home_assignment/app/home/ui/widget/product_grid.dart';
 
-import '../../../universal_widgets/carousel.dart';
+import '../widget/carousel.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -14,6 +14,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size gSize = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.grey.shade50,
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -26,7 +27,7 @@ class MyHomePage extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               background: Column(
                 children: [
-                  MyCarousel(),
+                  const MyCarousel(),
                   SizedBox(height: gSize.height * 0.02),
                   const MyServicesSlide(),
                 ],
