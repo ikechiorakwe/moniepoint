@@ -35,11 +35,11 @@ class Grid extends StatefulWidget {
           shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
           price: "\$11.00"),
       const MyGridContainer(
-          imagePath: "assets/images/s1.jpg",
+          imagePath: "assets/images/6-.png",
           shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
           price: "\$12.00"),
       const MyGridContainer(
-          imagePath: "assets/images/s8.jpg",
+          imagePath: "assets/images/4-.png",
           shirtName: "Essentials Men's short-\nsleeve CrewNeck T-shirt",
           price: "\$10.00"),
     ];
