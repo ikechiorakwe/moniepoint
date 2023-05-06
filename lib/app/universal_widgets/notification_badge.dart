@@ -21,10 +21,13 @@ class MyNotificationBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 2),
       ),
-      position: badges.BadgePosition.topEnd(top: 2, end: 10),
+      position: badges.BadgePosition.topEnd(top: 4, end: 15),
       badgeContent: Text(
         badgeText,
-        style: const TextStyle(color: Colors.white),
+        style: Theme.of(context)
+            .textTheme
+            .bodySmall
+            ?.copyWith(color: Colors.white),
       ),
       child: IconButton(
         icon: icon!,

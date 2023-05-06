@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:moniepoint_take_home_assignment/app/universal_widgets/notification_badge.dart';
 import 'package:moniepoint_take_home_assignment/app/utils/globals.dart';
-import 'package:moniepoint_take_home_assignment/app/widgets/notification_badge.dart';
 
-class MyClotheDisplayScreen extends StatelessWidget {
-  const MyClotheDisplayScreen({Key? key, this.imagePath, this.price})
+class ProductDetailScreen extends StatelessWidget {
+  const ProductDetailScreen({Key? key, this.imagePath, this.price})
       : super(key: key);
 
   final String? imagePath;
@@ -344,7 +343,7 @@ class _MyTabBarState extends State<MyTabBar>
     Size gSize = MediaQuery.of(context).size;
     return Container(
       color: Colors.grey.shade100,
-      height: gSize.height,
+      height: gSize.height * 0.2,
       child: Column(
         children: [
           TabBar(
@@ -370,7 +369,8 @@ class _MyTabBarState extends State<MyTabBar>
               controller: _tabController,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 10.0),
+                  padding:
+                      const EdgeInsets.only(top: 10.0, left: 10.0, right: 10.0),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

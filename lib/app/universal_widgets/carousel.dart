@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:moniepoint_take_home_assignment/app/widgets/search_bar.dart';
 
 class MyCarousel extends StatelessWidget {
-  const MyCarousel({Key? key}) : super(key: key);
+  MyCarousel({Key? key}) : super(key: key);
 
   List<Widget> get pages {
     return [
@@ -38,6 +37,7 @@ class MySwiperWidget extends StatelessWidget {
   const MySwiperWidget({Key? key, this.imagePath}) : super(key: key);
 
   final String? imagePath;
+
   @override
   Widget build(BuildContext context) {
     Size gSize = MediaQuery.of(context).size;
@@ -45,6 +45,7 @@ class MySwiperWidget extends StatelessWidget {
       children: [
         Container(
           height: gSize.height * 0.36,
+          width: double.infinity,
           decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(imagePath!),
@@ -57,11 +58,7 @@ class MySwiperWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
-                  height: gSize.height * 0.05,
-                ),
-                const Expanded(child: MySearchBar()),
-                SizedBox(
-                  height: gSize.height * 0.02,
+                  height: gSize.height * 0.15,
                 ),
                 Expanded(
                   child: Text(

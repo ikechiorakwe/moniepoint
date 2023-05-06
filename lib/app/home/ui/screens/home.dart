@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:moniepoint_take_home_assignment/app/home/ui/widget/product_header.dart';
+import 'package:moniepoint_take_home_assignment/app/home/ui/widget/services.dart';
+import 'package:moniepoint_take_home_assignment/app/universal_widgets/search_bar.dart';
 import 'package:moniepoint_take_home_assignment/app/utils/globals.dart';
-import 'package:moniepoint_take_home_assignment/app/widgets/product_grid.dart';
-import 'package:moniepoint_take_home_assignment/app/widgets/services.dart';
-import 'package:moniepoint_take_home_assignment/app/widgets/swiper.dart';
+import 'package:moniepoint_take_home_assignment/app/home/ui/widget/product_grid.dart';
+
+import '../../../universal_widgets/carousel.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -11,16 +14,31 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size gSize = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const MyCarousel(),
-            SizedBox(height: gSize.height * 0.03),
-            const MyServicesSlide(),
-            SizedBox(height: gSize.height * 0.02),
-            const MyProductGrid(),
-          ],
-        ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            elevation: 0,
+            pinned: true,
+            title: const MySearchBar(),
+            backgroundColor: Colors.white,
+            toolbarHeight: 70,
+            expandedHeight: 400,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Column(
+                children: [
+                  MyCarousel(),
+                  SizedBox(height: gSize.height * 0.02),
+                  const MyServicesSlide(),
+                ],
+              ),
+            ),
+            bottom: const PreferredSize(
+              preferredSize: Size.fromHeight(50),
+              child: ProductHeader(),
+            ),
+          ),
+          const Grid(),
+        ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         showUnselectedLabels: true,

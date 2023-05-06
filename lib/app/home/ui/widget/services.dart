@@ -44,9 +44,14 @@ class _MyServicesSlideState extends State<MyServicesSlide> {
   }
 
   ScrollController _scrollController = ScrollController();
+  _scrollToBottom() {
+    _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+  }
+
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
     _scrollController = ScrollController();
   }
 
@@ -58,6 +63,7 @@ class _MyServicesSlideState extends State<MyServicesSlide> {
       height: gSize.height * 0.1,
       width: gSize.width * 0.89,
       child: ListView.builder(
+        reverse: true,
         controller: _scrollController,
         itemBuilder: (BuildContext context, int index) {
           return services[index];

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moniepoint_take_home_assignment/app/widgets/notification_badge.dart';
+import 'package:moniepoint_take_home_assignment/app/universal_widgets/notification_badge.dart';
 
 class MySearchBar extends StatelessWidget {
   const MySearchBar({Key? key}) : super(key: key);
@@ -36,7 +36,7 @@ class MySearchBar extends StatelessWidget {
               icon: Icon(
                 Icons.shopping_bag_outlined,
               ),
-              iconSize: 40.0,
+              iconSize: 30.0,
               badgeText: "1",
               iconColor: Colors.black,
             )),
@@ -46,7 +46,7 @@ class MySearchBar extends StatelessWidget {
                 icon: Icon(
                   Icons.comment_outlined,
                 ),
-                iconSize: 40.0,
+                iconSize: 30.0,
                 badgeText: "9+",
                 iconColor: Colors.black))
       ],

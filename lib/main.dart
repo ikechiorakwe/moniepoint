@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moniepoint_take_home_assignment/app/pages/home.dart';
+import 'package:moniepoint_take_home_assignment/app/home/ui/screens/home.dart';
 import 'package:moniepoint_take_home_assignment/app/utils/globals.dart';
 import 'package:google_fonts/google_fonts.dart';
 
