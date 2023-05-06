@@ -7,7 +7,8 @@ class MyCarousel extends StatelessWidget {
   List<Widget> get pages {
     return [
       const MySwiperWidget(imagePath: "assets/images/shirt.jpg"),
-      const MySwiperWidget(imagePath: "assets/images/toner.jpg"),
+      const MySwiperWidget(imagePath: "assets/images/pexels.jpg"),
+      // const MySwiperWidget(imagePath: "assets/images/toner.jpg"),
     ];
   }
 

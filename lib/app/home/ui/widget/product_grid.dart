@@ -116,7 +116,7 @@ class _MyGridContainerState extends State<MyGridContainer> {
                     widget.imagePath!,
                     height: gSize.height * 0.15,
                     width: gSize.width * 0.9,
-                    // fit: BoxFit.cover,
+                    fit: BoxFit.cover,
                     cacheHeight: 300,
                     cacheWidth: 200,
                   ),
