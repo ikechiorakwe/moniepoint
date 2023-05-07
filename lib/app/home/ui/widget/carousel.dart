@@ -8,7 +8,6 @@ class MyCarousel extends StatelessWidget {
     return [
       const MySwiperWidget(imagePath: "assets/images/shirt.jpg"),
       const MySwiperWidget(imagePath: "assets/images/grey shirt.jpg"),
-      // const MySwiperWidget(imagePath: "assets/images/toner.jpg"),
     ];
   }
 

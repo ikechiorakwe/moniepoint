@@ -58,9 +58,6 @@ class ProductDetailScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
           child: Column(children: [
-            // SizedBox(
-            //   height: gSize.height * 0.02,
-            // ),
             Padding(
               padding: const EdgeInsets.only(left: 10.0, right: 10.0),
               child: Container(
@@ -227,7 +224,6 @@ class ProductDetailScreen extends StatelessWidget {
                             MaterialStateProperty.all(gPrimaryColor),
                         shape: MaterialStateProperty.all(
                             const RoundedRectangleBorder(
-                          // borderRadius: BorderRadius.circular(4.0),
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(4.0),
                               bottomLeft: Radius.circular(4.0)),
@@ -260,7 +256,6 @@ class ProductDetailScreen extends StatelessWidget {
                             MaterialStateProperty.all(Colors.grey.shade800),
                         shape: MaterialStateProperty.all(
                             const RoundedRectangleBorder(
-                          // borderRadius: BorderRadius.circular(4.0),
                           borderRadius: BorderRadius.only(
                               topRight: Radius.circular(4.0),
                               bottomRight: Radius.circular(4.0)),
